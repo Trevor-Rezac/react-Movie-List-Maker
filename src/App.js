@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MovieForm from './MovieForm';
 import MovieItem from './MovieItem';
 import MovieList from './MovieList';
@@ -12,6 +12,7 @@ function App() {
   const [colorForm, setColorForm] = useState('lightcoral');
   const [allMovies, setAllMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
+  const [filterQuery, setFilterQuery] = useState('');
 
   // console.log('||', titleForm, directorForm, yearForm, genreForm, colorForm);
   // console.log('||', allMovies);
@@ -22,16 +23,37 @@ function App() {
     setAllMovies(updatedMovies);
   }
 
-  function filterMovies(query) {
-    const filteredMovies = allMovies.filter(movie => movie.title.includes(query));
+  // function filterMovies(query) {
+  //   const filteredMovies = allMovies.filter(movie => movie.title.includes(query));
 
-    if (query) {
-      setFilteredMovies(filteredMovies);
-    } else {
-      setFilteredMovies([]);
-    }
+  //   if (query) {
+  //     setFilteredMovies(filteredMovies);
+  //   } else {
+  //     setFilteredMovies([]);
+  //   }
     
+  // }
+
+  function deleteMovie(title) {
+    const index = allMovies.findIndex(movie => movie.title === title);
+
+    allMovies.splice(index, 1);
+
+    setAllMovies([...allMovies]);
   }
+
+  useEffect(() => {
+    if (filterQuery) {
+      const updatedMovies = allMovies.filter(movie => movie.title.includes(filterQuery));
+
+      setFilteredMovies([...updatedMovies]);
+
+    } else {
+
+      setFilteredMovies([...allMovies]);
+
+    }
+  }, [filterQuery, allMovies]);
 
   return (
     <div className="App">
@@ -55,8 +77,10 @@ function App() {
       </div>
       <div className='movie-list-container'>
         <h2>Movie List</h2>
-        <input placeholder='Filter Movies' onChange={(e) => filterMovies(e.target.value)}/>
-        <MovieList movies={filteredMovies.length ? filteredMovies : allMovies} />
+        <input placeholder='Filter Movies' onChange={(e) => setFilterQuery(e.target.value)}/>
+        <MovieList 
+          deleteMovie={deleteMovie}
+          movies={filteredMovies.length ? filteredMovies : allMovies} />
       </div>
     </div>
   );

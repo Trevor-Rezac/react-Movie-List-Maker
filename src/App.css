@@ -50,6 +50,11 @@
   border: solid 2px black;
   border-radius: 10px;
   padding: .5rem;
+  margin: .5rem;
+}
+
+.movie-item h3 {
+  margin: 0 auto;
 }
 
 .form-container {
@@ -81,4 +86,8 @@ p {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+input {
+  margin: 5px;
 }

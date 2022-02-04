@@ -5,10 +5,15 @@ export default function MovieItem({
   title,
   director,
   year,
-  genre
+  genre,
+  deleteMovie
 }) {
+  console.log('||', deleteMovie);
+  return <div 
+    onClick={() => deleteMovie ? deleteMovie(title) : null}
+    className='movie-item' 
+    style={{ backgroundColor: color }}>
 
-  return <div className='movie-item' style={{ backgroundColor: color }}>
     <h3>{title}</h3>
     <p>Director: {director}</p>
     <p>Released: {year}</p>
