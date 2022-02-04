@@ -2,6 +2,7 @@ import './App.css';
 import { useState } from 'react';
 import MovieForm from './MovieForm';
 import MovieItem from './MovieItem';
+import MovieList from './MovieList';
 
 function App() {
   const [titleForm, setTitleForm] = useState('');
@@ -12,7 +13,7 @@ function App() {
   const [allMovies, setAllMovies] = useState([]);
 
   // console.log('||', titleForm, directorForm, yearForm, genreForm, colorForm);
-  console.log('||', allMovies);
+  // console.log('||', allMovies);
 
   function addMovie(newMovie) {
     const updatedMovies = [...allMovies, newMovie];
@@ -39,6 +40,10 @@ function App() {
           year={yearForm}
           genre={genreForm}
           color={colorForm} />}
+      </div>
+      <div className='movie-list-container'>
+        <h2>Movie List</h2>
+        <MovieList movies={allMovies} />
       </div>
     </div>
   );
