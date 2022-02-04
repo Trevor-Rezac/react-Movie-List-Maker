@@ -8,13 +8,41 @@ function App() {
   const [yearForm, setYearForm] = useState('');
   const [genreForm, setGenreForm] = useState('');
   const [colorForm, setColorForm] = useState('');
+  const [allMovies, setAllMovies] = useState([]);
 
-  console.log('||', titleForm, directorForm, yearForm, genreForm);
+  // console.log('||', titleForm, directorForm, yearForm, genreForm, colorForm);
+  console.log('||', allMovies);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const movie = {
+      title: titleForm,
+      director: directorForm,
+      year: yearForm,
+      genre: genreForm,
+      color: colorForm
+    };
+
+    addMovie(movie);
+
+    setTitleForm('');
+    setDirectorForm('');
+    setYearForm('');
+    setGenreForm('');
+    setColorForm('lightcoral');
+  }
+
+  function addMovie(newMovie) {
+    const updatedMovies = [...allMovies, newMovie];
+
+    setAllMovies(updatedMovies);
+  }
 
   return (
     <div className="App">
       <div className='form-container'>
-        <form>
+        <form onSubmit={handleSubmit}>
           Add a movie!
           <label>
             Title
