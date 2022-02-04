@@ -37,22 +37,14 @@ export default function MovieForm({
     
     <form onSubmit={handleSubmit}>
           Add a movie!
-      <label>
-            Title
-        <input required value={titleForm} onChange={e => setTitleForm(e.target.value)}></input>
-      </label>
-      <label>
-            Director
-        <input required value={directorForm} onChange={e => setDirectorForm(e.target.value)}></input>
-      </label>
-      <label>
-            Year
-        <input required value={yearForm} onChange={e => setYearForm(e.target.value)}></input>
-      </label>
-      <label>
-            Genre
-        <input required value={genreForm} onChange={e => setGenreForm(e.target.value)}></input>
-      </label>
+      <input required placeholder='Title' value={titleForm} onChange={e => setTitleForm(e.target.value)} ></input>
+
+      <input required placeholder='Director' value={directorForm} onChange={e => setDirectorForm(e.target.value)}></input>
+
+      <input required placeholder='Year' value={yearForm} onChange={e => setYearForm(e.target.value)}></input>
+
+      <input required placeholder='Genre' value={genreForm} onChange={e => setGenreForm(e.target.value)}></input>
+
       <label>
             Poster Color
         <select value={colorForm} onChange={e => setColorForm(e.target.value)}>
