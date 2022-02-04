@@ -11,6 +11,7 @@ function App() {
   const [genreForm, setGenreForm] = useState('');
   const [colorForm, setColorForm] = useState('lightcoral');
   const [allMovies, setAllMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
 
   // console.log('||', titleForm, directorForm, yearForm, genreForm, colorForm);
   // console.log('||', allMovies);
@@ -19,6 +20,17 @@ function App() {
     const updatedMovies = [...allMovies, newMovie];
 
     setAllMovies(updatedMovies);
+  }
+
+  function filterMovies(query) {
+    const filteredMovies = allMovies.filter(movie => movie.title.includes(query));
+
+    if (query) {
+      setFilteredMovies(filteredMovies);
+    } else {
+      setFilteredMovies([]);
+    }
+    
   }
 
   return (
@@ -43,7 +55,8 @@ function App() {
       </div>
       <div className='movie-list-container'>
         <h2>Movie List</h2>
-        <MovieList movies={allMovies} />
+        <input placeholder='Filter Movies' onChange={(e) => filterMovies(e.target.value)}/>
+        <MovieList movies={filteredMovies.length ? filteredMovies : allMovies} />
       </div>
     </div>
   );
