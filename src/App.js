@@ -7,6 +7,7 @@ function App() {
   const [directorForm, setDirectorForm] = useState('');
   const [yearForm, setYearForm] = useState('');
   const [genreForm, setGenreForm] = useState('');
+  const [colorForm, setColorForm] = useState('');
 
   console.log('||', titleForm, directorForm, yearForm, genreForm);
 
@@ -30,6 +31,17 @@ function App() {
           <label>
             Genre
             <input required value={genreForm} onChange={e => setGenreForm(e.target.value)}></input>
+          </label>
+          <label>
+            Poster Color
+            <select value={colorForm} onChange={e => setColorForm(e.target.value)}>
+              <option value='lightcoral'>Red</option>
+              <option value='lightsalmon'>Orange</option>
+              <option value='lightyellow'>Yellow</option>
+              <option value='lightgreen'>Green</option>
+              <option value='lightblue'>Blue</option>
+              <option value='purple'>Purple</option>
+            </select>
           </label>
           <button>Add Movie</button>
         </form>
