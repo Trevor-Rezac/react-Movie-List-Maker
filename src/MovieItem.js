@@ -8,7 +8,7 @@ export default function MovieItem({
   genre,
   deleteMovie
 }) {
-  console.log('||', deleteMovie);
+
   return <div 
     onClick={() => deleteMovie ? deleteMovie(title) : null}
     className='movie-item' 
