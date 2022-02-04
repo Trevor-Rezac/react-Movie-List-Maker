@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import MovieForm from './MovieForm';
+import MovieItem from './MovieItem';
 
 function App() {
   const [titleForm, setTitleForm] = useState('');
@@ -11,7 +12,7 @@ function App() {
   const [allMovies, setAllMovies] = useState([]);
 
   // console.log('||', titleForm, directorForm, yearForm, genreForm, colorForm);
-  // console.log('||', allMovies);
+  console.log('||', allMovies);
 
   function addMovie(newMovie) {
     const updatedMovies = [...allMovies, newMovie];
@@ -31,13 +32,13 @@ function App() {
           genreForm={genreForm} setGenreForm={setGenreForm} 
           colorForm={colorForm} setColorForm={setColorForm} 
           addMovie={addMovie}/>
-        {}
-        <div className='movie-item' style={{ backgroundColor: colorForm }}>
-          <h3>{titleForm}</h3>
-          <p>Director: {directorForm}</p>
-          <p>Released: {yearForm}</p>
-          <p>Genre: {genreForm}</p>
-        </div>
+
+        {titleForm && <MovieItem 
+          title={titleForm}
+          director={directorForm}
+          year={yearForm}
+          genre={genreForm}
+          color={colorForm} />}
       </div>
     </div>
   );
