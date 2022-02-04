@@ -37,7 +37,21 @@
   }
 }
 
+.form-container {
+  width: fit-content;
+}
+
+form button {
+  width: fit-content;
+}
+
 form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  padding: 5px;
 }
