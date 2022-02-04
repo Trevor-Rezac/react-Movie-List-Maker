@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import MovieForm from './MovieForm';
 
 function App() {
+  const [titleForm, setTitleForm] = useState('');
+  const [directorForm, setDirectorForm] = useState('');
+  const [yearForm, setYearForm] = useState('');
+  const [genreForm, setGenreForm] = useState('');
+
+  console.log('||', titleForm, directorForm, yearForm, genreForm);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form>
+        Add a movie!
+        <label>
+          Title
+          <input required value={titleForm} onChange={e => setTitleForm(e.target.value)}></input>
+        </label>
+        <label>
+          Director
+          <input required value={directorForm} onChange={e => setDirectorForm(e.target.value)}></input>
+        </label>
+        <label>
+          Year
+          <input required value={yearForm} onChange={e => setYearForm(e.target.value)}></input>
+        </label>
+        <label>
+          Genre
+          <input required value={genreForm} onChange={e => setGenreForm(e.target.value)}></input>
+        </label>
+        <button>Add Movie</button>
+      </form>
     </div>
   );
 }
